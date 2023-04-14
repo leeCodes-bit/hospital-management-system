@@ -57,68 +57,68 @@
               <div class="card-body p-4 text-white">
 
                 <!-- Report Form -->
-                <form class="mx-1 mx-md-4" method="POST" action="/report/create">
-                  <h2 class="text-center mb-2">Medical Report Form</h2>
+                <form class="mx-1 mx-md-4" method="POST" action="/editReport/<%= report.patientId %>">
+                  <h2 class="text-center mb-2">Update Medical Report</h2>
                   <div class="mb-4 d-flex mt-4">
                     <div class="form-outline flex-fill col-6 mb-0">
                       <label class="form-label" for="patientName">Patient Name</label>
-                      <input type="text" id="patientName" class="form-control" name="patientName"/>
+                      <input type="text" id="patientName" class="form-control" name="patientName" placeholder="" value="<%=report.patientName%>"/>
                     </div>
 
                     <div class="form-outline flex-fill col-6 mb-0">
                         <label class="form-label" for="age">Age</label>
-                        <input type="number" id="age" class="form-control" name="age"/>
+                        <input type="number" id="age" class="form-control" name="age"placeholder="" value="<%=report.age%>"/>
                       </div>
                     </div>
 
                     <div class="mb-4 d-flex">
                     <div class="form-outline flex-fill col-6 mb-0">
                         <label class="form-label" for="hospitalName">Hospital Name</label>
-                        <input type="text" id="hospitalName" class="form-control" name="hospitalName"/>
+                        <input type="text" id="hospitalName" class="form-control" name="hospitalName"placeholder="" value="<%=report.hospitalName%>"/>
                       </div>
 
                       <div class="form-outline flex-fill col-6 mb-0">
                         <label class="form-label" for="weight">Weight</label>
-                        <input type="text" id="weight" class="form-control" name="weight"/>
+                        <input type="text" id="weight" class="form-control" name="weight"  placeholder="" value="<%=report.weight%>"/>
                       </div>
                   </div>
                  
                   <div class="mb-4 d-flex">
                     <div class="form-outline flex-fill col-6 mb-0">
                       <label class="form-label" for="height">Height</label>
-                      <input type="text" id="height" class="form-control" name="height"/>
+                      <input type="text" id="height" class="form-control" name="height"  placeholder="" value="<%=report.height%>"/>
                     </div>
                     <div class="form-outline flex-fill col-6 mb-0">
                         <label class="form-label" for="bloodGroup">Blood Group</label>
-                        <input type="text" id="bloodGroup" class="form-control" name="bloodGroup"/>
+                        <input type="text" id="bloodGroup" class="form-control" name="bloodGroup"  placeholder="" value="<%=report.bloodGroup%>"/>
                       </div>
                   </div>
 
                   <div class="mb-4 d-flex">
                     <div class="form-outline flex-fill col-6 mb-0">
                       <label class="form-label" for="genotype">Genotype</label>
-                      <input type="text" id="genotype" class="form-control" name="genotype"/>
+                      <input type="text" id="genotype" class="form-control" name="genotype" placeholder="" value="<%=report.genotype%>" />
                     </div>
                     <div class="form-outline flex-fill col-6 mb-0">
                         <label class="form-label" for="bloodPressure">Blood Pressure</label>
-                        <input type="text" id="bloodPressure" class="form-control" name="bloodPressure"/>
+                        <input type="text" id="bloodPressure" class="form-control" name="bloodPressure" placeholder="" value="<%=report.bloodPressure%>"/>
                       </div>
                   </div>
 
                   <div class="mb-4 d-flex">
                     <div class="form-outline flex-fill col-6 mb-0">
                       <label class="form-label" for="HIV_status">HIV Status</label>
-                      <input type="text" id="HIV_status" class="form-control" name="HIV_status"/>
+                      <input type="text" id="HIV_status" class="form-control" name="HIV_status"placeholder="" value="<%=report.HIV_status%>"/>
                     </div>
                     <div class="form-outline flex-fill col-6 mb-0">
                         <label class="form-label" for="hepatitis">Hepatitis</label>
-                        <input type="text" id="hepatitis" class="form-control" name="hepatitis"/>
+                        <input type="text" id="hepatitis" class="form-control" name="hepatitis"placeholder="" value="<%=report.hepatitis%>"/>
                       </div>
                   </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                     <button type="submit" class="btn btn-primary btn-lg">
-                      Create Report
+                      Edit Report
                     </button>
                   </div>
                 </form>

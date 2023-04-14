@@ -56,8 +56,6 @@ DoctorInstance.init({
 }
 )
 
-// to connect the tables
-
 DoctorInstance.hasMany(ReportInstance, {foreignKey: 'doctorsId', as: 'Reports'});
 ReportInstance.belongsTo(DoctorInstance, {foreignKey: 'doctorsId', as: 'Doctors'})
 

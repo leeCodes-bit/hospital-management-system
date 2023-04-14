@@ -4,7 +4,7 @@ import { DoctorInstance } from "../model/doctorsModel";
 import { ReportInstance } from "../model/reportModel";
 import { createReportSchema, options, updateReportSchema } from "../utils/utils";
 
-/*=======================API */
+/*=======================API=============================== */
 // export const CreateReport = async(req:Request | any, res: Response) => {
 //     try{
 //         // validate with joi or zod
@@ -35,13 +35,9 @@ import { createReportSchema, options, updateReportSchema } from "../utils/utils"
 
 export const getReports =async (req:Request, res: Response) => {
   try{
-    // /report/get-report?limit=3&offset=1 - query params
     const limit = req.query?.limit as number | undefined
     const offset = req.query?.offset as number | undefined
 
-    // sequelize findAll or findAndCountAll
-
-    // const getAllReports = await ReportInstance.findAll();
     const getAllReports = await ReportInstance.findAndCountAll({
         limit: limit,
         offset: offset
@@ -60,13 +56,11 @@ export const getReports =async (req:Request, res: Response) => {
 
 export const updateReport = async (req:Request, res: Response) => {
     try{
-    // validate with joi or zod
     const validationResult = updateReportSchema.validate(req.body, options);
     if(validationResult.error){
         return res.status(400).json({Error: validationResult.error.details[0].message})
     };
 
-    // report/update-report/id - this is params
     const {patientId} =  req.params
     const { 
       patientName,
@@ -111,33 +105,32 @@ export const updateReport = async (req:Request, res: Response) => {
     }
 }
 
-// export const deleteReport = async(req: Request, res: Response)=>{
-// try{
-//     const {patientId} = req.params
-//     const report = await ReportInstance.findOne({where: {patientId}})
+export const deleteReport = async(req: Request, res: Response)=>{
+try{
+    const {patientId} = req.params
+    const report = await ReportInstance.findOne({where: {patientId}})
     
-//     if(!report){
-//         return res.status(400).json({
-//             error: "cannot find existing report"
-//         })
-//     }
+    if(!report){
+        return res.status(400).json({
+            error: "cannot find existing report"
+        })
+    }
 
-//     const deletedReport = await report.destroy()
+    const deletedReport = await report.destroy()
 
-//     return res.status(200).json({
-//         message: "Patient report successfully deleted",
-//         report: deletedReport
-//       });
-// }catch(error){
-//     console.log(error);
-// }
-// }
+    return res.status(200).json({
+        message: "Patient report successfully deleted",
+        report: deletedReport
+      });
+}catch(error){
+    console.log(error);
+}
+}
 
 
 /*======================EJS API===================== */
 export const CreateReport =async(req:Request | any, res: Response) => {
     try{
-    // validate with joi or zod
     const validationResult = createReportSchema.validate(req.body, options);
     if(validationResult.error){
         return res.render("CreateReport", {error: validationResult.error.details[0].message})
@@ -160,7 +153,6 @@ export const CreateReport =async(req:Request | any, res: Response) => {
     }
 }
 
-// get report by id
 export const getReportsById =async (req:Request | any, res: Response) => {
     try{
         const {id} = req.user

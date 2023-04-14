@@ -36,10 +36,7 @@
         <div class="collapse navbar-collapse" id="navcol-1">
           <ul class="nav navbar-nav w-100 justify-content-center mx-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/">Signup/Login</a>
+              <a class="nav-link active" aria-current="page" href="/">Dashboard</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/create">Create Report</a>
@@ -93,7 +90,7 @@
                         <td class="align-middle"><%=report.HIV_status%></td>
                         <td class="align-middle"><%=report.hepatitis%></td>
                         <td class="align-middle d-flex">
-                          <a href="#!" data-mdb-toggle="tooltip" title="Done" class="pr-3 badge bg-warning">Edit</a>
+                          <a href="/update/<%= report.patientId %>" data-mdb-toggle="tooltip" title="Done" class="pr-3 badge bg-warning">Edit</a>
                           <a href="/dashboard/<%= report.patientId %>" data-mdb-toggle="tooltip" title="Remove" class="badge bg-danger">Delete</a>
                         </td>
                       </tr> 

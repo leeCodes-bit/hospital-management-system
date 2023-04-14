@@ -11,5 +11,5 @@ const router = express_1.default.Router();
 router.post('/create', auth_1.auth, reportsController_1.CreateReport);
 router.get('/get-reports', auth_1.auth, reportsController_1.getReports);
 router.patch('/update-reports/:patientId', auth_1.auth, reportsController_1.updateReport);
-// router.delete('/delete-reports/:patientId', auth, deleteReport);
+router.delete('/delete-reports/:patientId', auth_1.auth, reportsController_1.deleteReport);
 exports.default = router;

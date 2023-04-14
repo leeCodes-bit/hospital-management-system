@@ -8,7 +8,7 @@ const joi_1 = __importDefault(require("joi"));
 exports.signupSchema = joi_1.default.object().keys({
     doctorsName: joi_1.default.string().required(),
     email: joi_1.default.string().trim().lowercase().required(),
-    specialization: joi_1.default.string().required(),
+    craft: joi_1.default.string().required(),
     gender: joi_1.default.string().required(),
     phoneNumber: joi_1.default.number().required(),
     password: joi_1.default.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),

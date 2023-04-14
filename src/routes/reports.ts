@@ -3,7 +3,7 @@ import {
      CreateReport, 
     getReports, 
     updateReport, 
-    // deleteReport 
+    deleteReport 
 } from '../controller/reportsController';
 import { auth } from '../middleware/auth';
 const router = express.Router();
@@ -12,6 +12,8 @@ const router = express.Router();
 router.post('/create', auth, CreateReport);
 router.get('/get-reports', auth, getReports);
 router.patch('/update-reports/:patientId', auth, updateReport);
-// router.delete('/delete-reports/:patientId', auth, deleteReport);
+router.delete('/delete-reports/:patientId', auth, deleteReport);
+
+
 
 export default router

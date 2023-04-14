@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getReportsById = exports.CreateReport = exports.updateReport = exports.getReports = void 0;
+exports.getReportsById = exports.CreateReport = exports.deleteReport = exports.updateReport = exports.getReports = void 0;
 const uuid_1 = require("uuid");
 const doctorsModel_1 = require("../model/doctorsModel");
 const reportModel_1 = require("../model/reportModel");
@@ -89,24 +89,26 @@ const updateReport = async (req, res) => {
     }
 };
 exports.updateReport = updateReport;
-// export const deleteReport = async(req: Request, res: Response)=>{
-// try{
-//     const {patientId} = req.params
-//     const report = await ReportInstance.findOne({where: {patientId}})
-//     if(!report){
-//         return res.status(400).json({
-//             error: "cannot find existing report"
-//         })
-//     }
-//     const deletedReport = await report.destroy()
-//     return res.status(200).json({
-//         message: "Patient report successfully deleted",
-//         report: deletedReport
-//       });
-// }catch(error){
-//     console.log(error);
-// }
-// }
+const deleteReport = async (req, res) => {
+    try {
+        const { patientId } = req.params;
+        const report = await reportModel_1.ReportInstance.findOne({ where: { patientId } });
+        if (!report) {
+            return res.status(400).json({
+                error: "cannot find existing report"
+            });
+        }
+        const deletedReport = await report.destroy();
+        return res.status(200).json({
+            message: "Patient report successfully deleted",
+            report: deletedReport
+        });
+    }
+    catch (error) {
+        console.log(error);
+    }
+};
+exports.deleteReport = deleteReport;
 /*======================EJS API===================== */
 const CreateReport = async (req, res) => {
     try {

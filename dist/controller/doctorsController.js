@@ -32,7 +32,7 @@ const jwtsecret = process.env.JWT_SECRET;
 //         })
 //         if(!user){
 //           let newUser =  await DoctorInstance.create({
-//                 id: doctorid,
+//                 doctorsId: doctorid,
 //                 doctorsName,
 //                 email,
 //                 specialization,

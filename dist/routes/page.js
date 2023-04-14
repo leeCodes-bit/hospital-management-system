@@ -15,9 +15,6 @@ router.get('/', (req, res, next) => {
 router.get('/login', (req, res, next) => {
     res.render('Login');
 });
-// router.get('/dashboard', auth, (req: Request, res: Response, next: NextFunction) => {
-//     res.render('Dashboard')
-// })
 router.get('/create', auth_1.auth, async (req, res, next) => {
     res.render('CreateReport');
 });
@@ -36,6 +33,41 @@ router.get('/dashboard', auth_1.auth, async (req, res) => {
     catch (error) {
         console.log(error);
     }
+});
+//   Update report
+router.get('/update/:id', auth_1.auth, async (req, res) => {
+    try {
+        const patientId = req.params.id;
+        const report = await reportModel_1.ReportInstance.findOne({ where: { patientId } });
+        if (!report) {
+            return res.render('Dashboard', { error: "Cannot find existing report" });
+        }
+        return res.render("Update", {
+            title: "edit patient",
+            report: report
+        });
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
+router.post("/editReport/:id", async (req, res) => {
+    const patientId = req.params.id;
+    const { patientName, age, hospitalName, weight, height, bloodGroup, genotype, bloodPressure, HIV_status, hepatitis, } = req.body;
+    const report = await reportModel_1.ReportInstance.findOne({ where: { patientId } });
+    const UpdatedReport = report?.update({
+        patientName,
+        age,
+        hospitalName,
+        weight,
+        height,
+        bloodGroup,
+        genotype,
+        bloodPressure,
+        HIV_status,
+        hepatitis,
+    });
+    return res.redirect("/dashboard");
 });
 //   delete report
 router.get('/dashboard/:id', auth_1.auth, async (req, res) => {
